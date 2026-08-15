@@ -13,6 +13,9 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
+# Generate prisma files
+RUN npx prisma generate
+
 # Build the NestJS application
 RUN npm run build
 
