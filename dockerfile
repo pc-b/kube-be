@@ -20,4 +20,5 @@ RUN npm run build
 EXPOSE 3000
 
 # Command to run the application
-CMD ["node", "dist/src/main"]
+# CMD ["node", "dist/src/main"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/src/main"]
