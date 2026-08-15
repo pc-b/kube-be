@@ -57,6 +57,19 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Migrations
+
+````bash
+#initial setup
+$ npx prisma migrate dev
+
+# make db changes
+$ npx prisma migrate dev --name name_of_change
+
+# sync
+npx prisma generate
+
+
 ## Deployment
 
 When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
@@ -66,7 +79,7 @@ If you are looking for a cloud-based platform to deploy your NestJS application,
 ```bash
 $ npm install -g @nestjs/mau
 $ mau deploy
-```
+````
 
 With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
 
