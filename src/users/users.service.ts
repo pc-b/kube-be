@@ -17,4 +17,16 @@ export class UsersService {
     });
     return user;
   }
+
+  async getUser(id: number): Promise<User | null> {
+    const user = await this.prisma.user.findUnique({
+      where: { id },
+    });
+    return user;
+  }
+
+  async getAllUsers(): Promise<User[]> {
+    const users = await this.prisma.user.findMany();
+    return users;
+  }
 }
