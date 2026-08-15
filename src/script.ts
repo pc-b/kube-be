@@ -1,4 +1,4 @@
-import { PrismaService } from '../prisma/prisma';
+import { PrismaService } from './prisma/prisma';
 
 async function main() {
   const prisma = new PrismaService();
