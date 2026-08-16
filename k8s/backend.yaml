@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-app-be
+  labels:
+    app: kube-be
+spec:
+  selector:
+    matchLabels:
+      app: kube-be
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kube-be
+    spec:
+      containers:
+        - name: kube-be
+          image: ghcr.io/pc-b/kube-be:main
+          resources:
+            requests:
+              memory: 512Mi
+          ports:
+            - containerPort: 3000
+          # env:
+          #   - DATABASE_URL:
+          #     value:
