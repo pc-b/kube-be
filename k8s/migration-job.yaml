@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration-job
+spec:
+  ttlSecondsAfterFinished: 100
+  template:
+    spec:
+      containers:
+        - name: prisma-migrate
+          image: ghcr.io/pc-b/kube-be:main
+          command: ['npx', 'prisma', 'migrate', 'deploy']
+          env:
+            - name: DATABASE_URL
+              value: postgres://user:password@postgres-service:5432/postgres
+      restartPolicy: OnFailure
+  backoffLimit: 3

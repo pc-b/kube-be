@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: kube-be
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -22,6 +22,6 @@ spec:
               memory: 512Mi
           ports:
             - containerPort: 3000
-          # env:
-          #   - DATABASE_URL:
-          #     value:
+          env:
+            - name: DATABASE_URL
+              value: postgres://user:password@postgres-service:5432/postgres

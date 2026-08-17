@@ -62,6 +62,7 @@ $ npm run test:cov
 ````bash
 #initial setup
 $ npx prisma migrate dev
+$ npx prisma migrate deploy
 
 # make db changes
 $ npx prisma migrate dev --name name_of_change
