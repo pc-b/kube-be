@@ -17,6 +17,7 @@ spec:
       containers:
         - name: kube-be
           image: ghcr.io/pc-b/kube-be:main
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 512Mi
