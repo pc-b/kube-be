@@ -22,7 +22,19 @@ export class UsersController {
   }
 
   @Post()
-  create(@Body() createUserDTO: CreateUserDTO): Promise<User> {
+  async create(@Body() createUserDTO: CreateUserDTO): Promise<User> {
+    try {
+      this.logger.log(`createUser called, username: ${createUserDTO.username}`);
+      this.logger.log(
+        `attempting to create a user, username: ${createUserDTO.username}`,
+      );
+      const user = await this.usersService.create(createUserDTO);
+      this.logger.log(`user created, id: ${user.id}`);
+      return user;
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      this.logger.log(`failed to create a user, error: ${message}`);
+    }
     return this.usersService.create(createUserDTO);
   }
 
