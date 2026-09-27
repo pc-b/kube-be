@@ -20,7 +20,11 @@ spec:
           imagePullPolicy: Always
           resources:
             requests:
+              cpu: 1
               memory: 512Mi
+            limits:
+              cpu: 2
+              memory: 1Gi
           ports:
             - containerPort: 3000
           env:
@@ -30,6 +34,6 @@ spec:
             httpGet:
               path: /health/ready
               port: 3000
-            periodSeconds: 5
+            periodSeconds: 10
             timeoutSeconds: 2
             failureThreshold: 3
