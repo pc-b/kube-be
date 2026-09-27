@@ -26,3 +26,10 @@ spec:
           env:
             - name: DATABASE_URL
               value: postgres://user:password@postgres-service:5432/postgres
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 3000
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
